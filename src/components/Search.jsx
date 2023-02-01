@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { TextField, InputAdornment, IconButton } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Search = () => {
   const [songs, setSongs] = useState([{ track: "" }]);
@@ -7,6 +9,12 @@ const Search = () => {
 
   const collectedData = (e) => {
     setUserInput(e.target.value);
+  };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      fetchData(userInput);
+    }
   };
 
   console.log(userInput);
@@ -23,14 +31,26 @@ const Search = () => {
 
   return (
     <div>
-      <input
+      <TextField
         type="text"
+        id="standard-basic"
+        label="Search Music Libary"
+        variant="standard"
         onChange={(e) => {
           collectedData(e);
         }}
+        onKeyPress={handleEnter}
         value={userInput}
-      />
-      <button onClick={() => fetchData(userInput)}>fetch data</button>
+      ></TextField>
+
+      <IconButton
+        color="primary"
+        component="label"
+        onClick={() => fetchData(userInput)}
+        size="small"
+      >
+        <SearchIcon />
+      </IconButton>
 
       {songs.map((s) => (
         <div>
