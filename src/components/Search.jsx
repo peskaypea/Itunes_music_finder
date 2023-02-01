@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { TextField, IconButton, Container, Grid, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import MusicCard from "./MusicCard";
 
 const Search = () => {
   const [songs, setSongs] = useState([{ track: "" }]);
@@ -31,34 +32,69 @@ const Search = () => {
 
   return (
     <div>
-      <TextField
-        type="text"
-        id="standard-basic"
-        label="Search Music Libary"
-        variant="standard"
-        onChange={(e) => {
-          collectedData(e);
+      <Container
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          mt: 6,
         }}
-        onKeyPress={handleEnter}
-        value={userInput}
-      ></TextField>
-
-      <IconButton
-        color="primary"
-        component="label"
-        onClick={() => fetchData(userInput)}
-        size="small"
       >
-        <SearchIcon />
-      </IconButton>
+        <TextField
+          type="text"
+          id="standard-basic"
+          label="Search Music Libary"
+          variant="standard"
+          onChange={(e) => {
+            collectedData(e);
+          }}
+          onKeyPress={handleEnter}
+          value={userInput}
+        ></TextField>
 
-      {songs.map((s) => (
-        <div>
-          <h3>{s.trackName}</h3>
-          <img src={s.artworkUrl100} alt="" />
-          <h5>{s.artistName}</h5>
-        </div>
-      ))}
+        <IconButton
+          color="primary"
+          component="label"
+          onClick={() => fetchData(userInput)}
+          size="small"
+        >
+          <SearchIcon />
+        </IconButton>
+      </Container>
+
+      <Container>
+        <Grid container>
+          {songs.map((song, index) => (
+            <Grid
+              item
+              key={index}
+              xs={3}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              {song.artworkUrl100 && (
+                <MusicCard
+                  albumCover={song.artworkUrl100}
+                  artistName={song.artistName}
+                  trackName={song.trackName}
+                  style={{
+                    width: "100%",
+                  }}
+                >
+                  {/* <img src={song.artworkUrl100} alt="" />
+              <h4>{song.artistName}</h4>
+              <h5>{song.trackName}</h5> */}
+                </MusicCard>
+              )}
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </div>
   );
 };
