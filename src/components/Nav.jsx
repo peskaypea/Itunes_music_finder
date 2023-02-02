@@ -19,12 +19,7 @@ export default function ButtonAppBar({ check, change }) {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Windy Tunes
           </Typography>
-          <Switch
-            defaultChecked
-            color="secondary"
-            onChange={change}
-            checked={check}
-          />
+          <Switch color="secondary" onChange={change} checked={check} />
         </Toolbar>
       </AppBar>
     </Box>

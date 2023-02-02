@@ -15,16 +15,11 @@ function App() {
         light: "#8561c5",
         dark: "#673ab7",
       },
-      background: {
-        main: darkMode ? "#a7a8a7" : "#ffffff",
-        light: "#8561c5",
-        dark: "#673ab7",
-      },
     },
   });
   const cardStyle = {
     backgroundColor: darkMode ? "#a7a8a7" : "#ffffff",
-    height: "200vh",
+    height: "300vh",
   };
 
   return (

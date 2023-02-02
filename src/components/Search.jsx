@@ -1,33 +1,38 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { TextField, IconButton, Container, Grid, Paper } from "@mui/material";
+import { TextField, IconButton, Container, Grid, Switch } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MusicCard from "./MusicCard";
 
 const Search = () => {
   const [songs, setSongs] = useState([{ track: "" }]);
   const [userInput, setUserInput] = useState("");
+  const [gridLayout, setGridLayout] = useState(3);
 
   const collectedData = (e) => {
     setUserInput(e.target.value);
   };
-
   const handleEnter = (e) => {
     if (e.key === "Enter") {
       fetchData(userInput);
     }
   };
 
-  console.log(userInput);
+  const handleToggleChange = (e) => {
+    e.target.checked ? setGridLayout(6) : setGridLayout(3);
+  };
 
   const fetchData = (inputs) => {
     const params = { term: inputs, media: "music", limit: 20 };
-    axios
-      .get("https://itunes.apple.com/search?", { params })
-      .then((response) => {
-        console.log(response.data);
-        setSongs(response.data.results);
-      });
+    try {
+      axios
+        .get("https://itunes.apple.com/search?", { params })
+        .then((response) => {
+          setSongs(response.data.results);
+        });
+    } catch (err) {
+      console.log(err); // Error handle for API response
+    }
   };
 
   return (
@@ -60,6 +65,7 @@ const Search = () => {
         >
           <SearchIcon />
         </IconButton>
+        <Switch onChange={handleToggleChange} />
       </Container>
 
       <Container>
@@ -68,13 +74,14 @@ const Search = () => {
             <Grid
               item
               key={index}
-              xs={3}
               sx={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 width: "100%",
               }}
+              xs={6}
+              md={gridLayout}
             >
               {song.artworkUrl100 && (
                 <MusicCard
