@@ -15,14 +15,23 @@ function App() {
         light: "#8561c5",
         dark: "#673ab7",
       },
+      background: {
+        main: darkMode ? "#a7a8a7" : "#ffffff",
+        light: "#8561c5",
+        dark: "#673ab7",
+      },
     },
   });
+  const cardStyle = {
+    backgroundColor: darkMode ? "#a7a8a7" : "#ffffff",
+    height: "200vh",
+  };
 
   return (
     <div>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Paper theme={theme} style={{ height: "250vh" }}>
+        <Paper theme={theme} style={cardStyle}>
           <Nav check={darkMode} change={() => setDarkMode(!darkMode)} />
           <Search theme={theme} />
         </Paper>

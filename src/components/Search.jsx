@@ -40,7 +40,6 @@ const Search = () => {
           width: "100%",
           mt: 6,
           mb: 4,
-          backGround: "none",
         }}
       >
         <TextField

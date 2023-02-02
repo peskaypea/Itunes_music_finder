@@ -7,8 +7,9 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
       <Card
         sx={{
           ":hover": {
-            boxShadow: 20, // theme.shadows[20]
+            boxShadow: 20,
           },
+
           display: "flex",
           width: {
             xs: 50, // 0px
