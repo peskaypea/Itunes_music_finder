@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
-const MusicCard = ({ artistName, albumCover, trackName }) => {
-  const [format, setFormat] = useState(false);
+const MusicCard = ({ artistName, albumCover, trackName, albumName }) => {
   return (
     <>
       <Card
@@ -14,17 +13,13 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
           m: 1,
           width: {
             xs: 300, // 0px
-            sm: 300, // 600px
-            md: 300, // 900px
+            // 600px
+            // 900px
             lg: 400, // 1200px
             xl: 500, // 1536px
           },
           height: {
             xs: 100,
-            sm: 100,
-            md: 100,
-            lg: 100,
-            xl: 100,
           },
         }}
       >
@@ -46,7 +41,7 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
         >
           <CardContent sx={{ flex: "1 0 auto", width: 1 }}>
             <Typography component="div" variant="p" sx={{ fontSize: 12 }}>
-              {trackName.slice(0, 14)}..
+              {albumName.slice(0, 14)}..
             </Typography>
             <Typography
               variant="subtitle1"
@@ -55,6 +50,14 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
               sx={{ fontSize: 12 }}
             >
               {artistName.slice(0, 10)}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.primary"
+              component="div"
+              sx={{ fontSize: 12 }}
+            >
+              {trackName.slice(0, 10)}
             </Typography>
           </CardContent>
         </Box>

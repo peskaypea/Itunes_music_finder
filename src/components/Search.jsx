@@ -29,6 +29,7 @@ const Search = () => {
         .get("https://itunes.apple.com/search?", { params })
         .then((response) => {
           setSongs(response.data.results);
+          console.log(response.data.results);
         });
     } catch (err) {
       console.log(err); // Error handle for API response
@@ -92,6 +93,7 @@ const Search = () => {
                   albumCover={song.artworkUrl100}
                   artistName={song.artistName}
                   trackName={song.trackName}
+                  albumName={song.collectionCensoredName}
                   style={{
                     width: "100%",
                   }}
