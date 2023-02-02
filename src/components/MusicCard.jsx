@@ -13,14 +13,14 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
           display: "flex",
           m: 1,
           width: {
-            xs: 200, // 0px
+            xs: 300, // 0px
             sm: 300, // 600px
             md: 300, // 900px
             lg: 400, // 1200px
             xl: 500, // 1536px
           },
           height: {
-            xs: 200,
+            xs: 100,
             sm: 100,
             md: 100,
             lg: 100,

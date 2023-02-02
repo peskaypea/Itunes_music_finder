@@ -66,6 +66,7 @@ const Search = () => {
           <SearchIcon />
         </IconButton>
         <Switch
+          color="secondary"
           sx={{ display: { xs: "none", md: "block" } }}
           onChange={handleToggleChange}
         />
