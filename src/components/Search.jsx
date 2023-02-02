@@ -39,13 +39,14 @@ const Search = () => {
           alignItems: "center",
           width: "100%",
           mt: 6,
+          mb: 4,
+          backGround: "none",
         }}
       >
         <TextField
           type="text"
           id="standard-basic"
           label="Search Music Libary"
-          variant="standard"
           onChange={(e) => {
             collectedData(e);
           }}
@@ -54,7 +55,6 @@ const Search = () => {
         ></TextField>
 
         <IconButton
-          color="primary"
           component="label"
           onClick={() => fetchData(userInput)}
           size="small"
@@ -85,11 +85,7 @@ const Search = () => {
                   style={{
                     width: "100%",
                   }}
-                >
-                  {/* <img src={song.artworkUrl100} alt="" />
-              <h4>{song.artistName}</h4>
-              <h5>{song.trackName}</h5> */}
-                </MusicCard>
+                ></MusicCard>
               )}
             </Grid>
           ))}

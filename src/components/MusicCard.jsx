@@ -12,7 +12,34 @@ import {
 const MusicCard = ({ artistName, albumCover, trackName }) => {
   return (
     <>
-      <Card sx={{ display: "flex", width: 1, m: 1, height: 4 / 5 }}>
+      <Card
+        sx={{
+          display: "flex",
+          width: {
+            xs: 50, // 0px
+            sm: 100, // 600px
+            md: 200, // 900px
+            lg: 200, // 1200px
+            xl: 200, // 1536px
+          },
+          m: 1,
+          height: {
+            xs: 50,
+            sm: 100,
+            md: 100,
+            lg: 100,
+            xl: 100,
+          },
+        }}
+      >
+        <CardMedia
+          component="img"
+          sx={{
+            width: "100px",
+          }}
+          image={albumCover}
+          alt="album cover"
+        />
         <Box
           sx={{
             display: "flex",
@@ -21,13 +48,14 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
           }}
         >
           <CardContent sx={{ flex: "1 0 auto", width: 1 }}>
-            <Typography component="div" variant="p">
+            <Typography component="div" variant="p" sx={{ fontSize: 12 }}>
               {trackName.slice(0, 14)}..
             </Typography>
             <Typography
               variant="subtitle1"
               color="text.secondary"
               component="div"
+              sx={{ fontSize: 12 }}
             >
               {artistName.slice(0, 10)}
             </Typography>
@@ -53,12 +81,6 @@ const MusicCard = ({ artistName, albumCover, trackName }) => {
             </IconButton>
           </Box>*/}
         </Box>
-        <CardMedia
-          component="img"
-          sx={{ width: 100 }}
-          image={albumCover}
-          alt="Live from space album cover"
-        />
       </Card>
 
       {/* <Box width="100px">
