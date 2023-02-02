@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  CardMedia,
-  Grid,
-  Paper,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography, CardMedia } from "@mui/material";
 
 const MusicCard = ({ artistName, albumCover, trackName }) => {
   return (
     <>
       <Card
         sx={{
+          ":hover": {
+            boxShadow: 20, // theme.shadows[20]
+          },
           display: "flex",
           width: {
             xs: 50, // 0px
