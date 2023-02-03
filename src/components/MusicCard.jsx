@@ -12,11 +12,9 @@ const MusicCard = ({ artistName, albumCover, trackName, albumName }) => {
           display: "flex",
           m: 1,
           width: {
-            xs: 300, // 0px
-            // 600px
-            // 900px
-            lg: 400, // 1200px
-            xl: 500, // 1536px
+            xs: 300,
+            lg: 400,
+            xl: 500,
           },
           height: {
             xs: 100,
@@ -55,9 +53,9 @@ const MusicCard = ({ artistName, albumCover, trackName, albumName }) => {
               variant="subtitle1"
               color="text.primary"
               component="div"
-              sx={{ fontSize: 12 }}
+              sx={{ fontSize: 7 }}
             >
-              {trackName.slice(0, 10)}
+              {trackName.slice(0, 15)}
             </Typography>
           </CardContent>
         </Box>
