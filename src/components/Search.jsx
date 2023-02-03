@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { TextField, IconButton, Container, Grid, Switch } from "@mui/material";
+import {
+  TextField,
+  IconButton,
+  Container,
+  Grid,
+  Switch,
+  Pagination,
+} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MusicCard from "./MusicCard";
 
 const Search = () => {
   const [songs, setSongs] = useState([{ track: "" }]);
+  const [songs2, setSongs2] = useState([{ track: "" }]);
   const [userInput, setUserInput] = useState("");
   const [gridLayout, setGridLayout] = useState(3);
 
@@ -18,18 +26,32 @@ const Search = () => {
     }
   };
 
+  const pageSlicer = (pageNumber) => {
+    let newSongs = [];
+
+    const setSongLength = songs2;
+
+    if (pageNumber === 1) {
+      newSongs = setSongLength.slice(0, 20);
+      setSongs(newSongs);
+    } else if (pageNumber === 2) {
+      newSongs = setSongLength.slice(20, 40);
+      setSongs(newSongs);
+    }
+  };
+
   const handleToggleChange = (e) => {
     e.target.checked ? setGridLayout(6) : setGridLayout(3);
   };
 
   const fetchData = (inputs) => {
-    const params = { term: inputs, media: "music", limit: 20 };
+    const params = { term: inputs, media: "music", limit: 40 };
     try {
       axios
         .get("https://itunes.apple.com/search?", { params })
         .then((response) => {
           setSongs(response.data.results);
-          console.log(response.data.results);
+          setSongs2(response.data.results);
         });
     } catch (err) {
       console.log(err); // Error handle for API response
@@ -72,6 +94,12 @@ const Search = () => {
           onChange={handleToggleChange}
         />
       </Container>
+      <Pagination
+        count={2}
+        color="secondary"
+        onChange={(e, page) => pageSlicer(page)}
+        sx={{ display: "flex", justifyContent: "center", mr: 11 }}
+      />
 
       <Container>
         <Grid container>
