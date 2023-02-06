@@ -52,6 +52,7 @@ const Search = () => {
         .then((response) => {
           setSongs(response.data.results);
           setSongs2(response.data.results);
+          pageSlicer(1);
         });
     } catch (err) {
       console.log(err); // Error handle for API response
