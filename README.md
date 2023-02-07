@@ -40,6 +40,4 @@ Live website https://itunes-zi2r.onrender.com/
 ## Usage
 1. Enter the artist or song name you are looking for in the search bar.
 2. Click on the search button to view the results.
-3. Click on a song or artist to view more detailed information.
-4. Click on the download button to download the song from Itunes.
-5. Click on the save button to save
+
