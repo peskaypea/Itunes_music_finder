@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Search from "./components/Search";
 import Nav from "./components/Nav";
 
-import { CssBaseline, createTheme, ThemeProvider, Paper } from "@mui/material";
+import { CssBaseline, createTheme, ThemeProvider, Box } from "@mui/material";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -19,17 +19,17 @@ function App() {
   });
   const cardStyle = {
     backgroundColor: darkMode ? "#a7a8a7" : "#ffffff",
-    height: "300vh",
+    height: "100vh",
   };
 
   return (
     <div>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
-        <Paper theme={theme} style={cardStyle}>
+      <ThemeProvider theme={theme} style={theme}>
+        <Box theme={theme} style={cardStyle} sx={{ border: "none" }}>
           <Nav check={darkMode} change={() => setDarkMode(!darkMode)} />
-          <Search theme={theme} />
-        </Paper>
+          <Search theme={theme} style={cardStyle} />
+        </Box>
       </ThemeProvider>
     </div>
   );

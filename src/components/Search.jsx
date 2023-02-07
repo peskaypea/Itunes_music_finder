@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   TextField,
@@ -41,18 +41,24 @@ const Search = () => {
   };
 
   const handleToggleChange = (e) => {
-    e.target.checked ? setGridLayout(6) : setGridLayout(3);
+    e.target.checked ? setGridLayout(12) : setGridLayout(3);
   };
+
+  useEffect(() => {
+    pageSlicer(1);
+  }, [songs2]);
 
   const fetchData = (inputs) => {
     const params = { term: inputs, media: "music", limit: 40 };
+
     try {
       axios
         .get("https://itunes.apple.com/search?", { params })
         .then((response) => {
-          setSongs(response.data.results);
           setSongs2(response.data.results);
-          pageSlicer(1);
+          setSongs(response.data.results);
+
+          console.log(response);
         });
     } catch (err) {
       console.log(err); // Error handle for API response
@@ -95,14 +101,16 @@ const Search = () => {
           onChange={handleToggleChange}
         />
       </Container>
-      <Pagination
-        count={2}
-        color="secondary"
-        onChange={(e, page) => pageSlicer(page)}
-        sx={{ display: "flex", justifyContent: "center", mr: 11 }}
-      />
+      {songs2[0].track !== "" && (
+        <Pagination
+          count={2}
+          color="secondary"
+          onChange={(e, page) => pageSlicer(page)}
+          sx={{ display: "flex", justifyContent: "center", mr: 11 }}
+        />
+      )}
 
-      <Container>
+      <Container sx={{ pb: 5 }}>
         <Grid container>
           {songs.map((song, index) => (
             <Grid
@@ -114,7 +122,7 @@ const Search = () => {
                 alignItems: "center",
                 width: "100%",
               }}
-              xs={6}
+              xs={12}
               md={gridLayout}
             >
               {song.artworkUrl100 && (
