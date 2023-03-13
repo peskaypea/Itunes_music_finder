@@ -5,8 +5,7 @@ Live website https://itunes-zi2r.onrender.com/
 ## Features
 - Search for music by artist or song name.
 - View detailed information about the artist or song.
-- Download the music from Itunes.
-- Save your favorite songs and artists.
+
 
 ## Technology Stack
 - HTML 
